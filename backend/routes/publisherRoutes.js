@@ -13,7 +13,7 @@ import {
 
 router.get('/', getAllPublishers);
 router.get('/:id',getPublisherById);
-router.post('/', createPublisher);
+router.post('/add', createPublisher);
 router.put('/:id', updatePublisher);
 router.delete('/:id', deletePublisher);
 

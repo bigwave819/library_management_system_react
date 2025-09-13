@@ -6,6 +6,12 @@ export const createSupplier = async (req, res) => {
     if ( !name ) {
         return res.status(400).json({ message: "ALL FIELDS ARE REQUIRED" })
     }
+
+    const existignSupplier = await Supplier.findOne({ name })
+
+    if (existignSupplier) {
+      return res.status(500).json({ message: "The supplier already exists" })
+    }
     const newSupplier = new Supplier({ name });
     await newSupplier.save();
     res.status(201).json(newSupplier);
@@ -14,7 +20,7 @@ export const createSupplier = async (req, res) => {
   }
 };
 
-export const getAllSuppliers = async (req, res) => {
+export const getAllSuppliers = async (_, res) => {
   try {
     const suppliers = await Supplier.find();
     res.json(suppliers);

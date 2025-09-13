@@ -3,11 +3,28 @@ import Book from "../models/bookModel.js";
 export const createBook = async (req, res) => {
   try {
     const { title, publisher, supplier, availableCopies } = req.body;
-    const newBook = new Book({ title, publisher, supplier, availableCopies });
+
+    const existingBooks = await Book.findOne({ title })
+
+    if (existingBooks) {
+      return res.status(400).json({ message: "The books already exists" })
+    }
+    const newBook = new Book({ 
+      title, 
+      publisher, 
+      supplier, 
+      availableCopies 
+    });
+
     await newBook.save();
+
     res.status(201).json(newBook);
+
   } catch (error) {
-    res.status(500).json({ message: "Server Error", error: error.message });
+    res.status(500).json({ 
+      message: "Server Error", 
+      error: error.message 
+    });
   }
 };
 

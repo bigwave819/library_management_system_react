@@ -12,7 +12,7 @@ import {
 
 router.get('/', getAllSuppliers);
 router.get('/:id', getSupplierById);
-router.post('/', createSupplier);
+router.post('/add', createSupplier);
 router.put('/:id', updateSupplier);
 router.delete('/:id', deleteSupplier);
 

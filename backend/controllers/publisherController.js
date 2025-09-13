@@ -3,6 +3,12 @@ import Publisher from "../models/publisherModel.js";
 export const createPublisher = async (req, res) => {
   try {
     const { name, contactInfo } = req.body;
+
+    const existingPublisher = await Publisher.findOne({ name })
+
+    if (existingPublisher) {
+      return res.status(400).json({ message: "The publisher Already exists" })
+    }
     const newPublisher = new Publisher({ name, contactInfo });
     await newPublisher.save();
     res.status(201).json(newPublisher);

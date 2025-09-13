@@ -13,6 +13,7 @@ const { urlencoded } = bodyParser;
 const app = express();
 const port  = process.env.PORT || 7000;
 dotenv.config();
+
 app.use(cors());
 app.use(express.json());
 app.use(urlencoded({ extended: true }))
@@ -23,7 +24,7 @@ connectDB();
 
 //base routes
 app.use("/api/users", userRoutes)
-app.use('/api/pusblisher', publisherRoutes);
+app.use('/api/publisher', publisherRoutes);
 app.use("/api/book", bookRoutes);
 app.use("/api/suppliers", supplierRoutes)
 

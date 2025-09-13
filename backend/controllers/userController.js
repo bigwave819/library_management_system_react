@@ -4,9 +4,9 @@ import jwtToken from "../utils/jwtToken.js";
 
 export const createUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!email || !password) {
+    if ( !name || !email || !password) {
       return res.status(400).json({ message: "ALL FIELDS ARE REQUIRED" });
     }
 
@@ -19,6 +19,7 @@ export const createUser = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
+      name,
       email,
       password: hashPassword,
     });
@@ -30,6 +31,7 @@ export const createUser = async (req, res) => {
     res.status(201).json({
       token,
       user: {
+        name,
         email,
       },
     });
@@ -66,6 +68,7 @@ export const login = async (req, res) => {
     res.status(200).json({
       token,
       user: {
+        name,
         email,
       },
     });
