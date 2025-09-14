@@ -24,6 +24,14 @@ const Supplier = () => {
     getSuppliers();
   }, []);
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete("")
+      getSuppliers()
+    } catch (error) {
+      setError("failed to delete the supplier")
+    }
+  }
   return (
     <div className="w-full min-h-[80vh] p-6 bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Page Header */}
@@ -66,7 +74,7 @@ const Supplier = () => {
                   <button className="edit-card-button">
                     <LuPen/>
                   </button>
-                  <button className="delete-card-button">
+                  <button className="delete-card-button" onClick={() => handleDelete()}>
                     <LuTrash />
                   </button>
                 </div>
