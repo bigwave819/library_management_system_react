@@ -8,6 +8,8 @@ import Publisher from "./pages/user/publisher/GetPublisher";
 import Footer from "./components/Footer";
 import CreateSupplier from "./pages/user/supplier/CreateSupplier";
 import CreatePublisher from "./pages/user/publisher/CreatePublisher";
+import CreateBook from "./pages/user/book/CreateBook";
+import ViewBook from "./pages/user/book/ViewBook";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/suppliers" element={<Supplier/>}/>
         <Route path="/supplier/create" element={<CreateSupplier/>}/>
         <Route path="/publishers" element={<Publisher/>}/>
+        <Route path="/books" element={<ViewBook/>}/>
+        <Route path="/books/create" element={<CreateBook/>}/>
         <Route path="/publisher/create" element={<CreatePublisher/>}/>
       </Routes>
       <Footer />

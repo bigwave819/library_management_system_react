@@ -15,7 +15,7 @@ import {
 
 router.get('/', getAllBooks);
 router.get('/:id', getBookById);
-router.post('/',  createBook);
+router.post('/create',  createBook);
 router.put('/:id', updateBook);
 router.delete('/:id', deleteBook);
 
